@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Secure Authentication System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login/Signup Card -->
+        <div class="auth-card" id="authCard">
+            <!-- Header -->
+            <div class="header">
+                <div class="icon-circle">
+                    <svg class="shield-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h1>Secure Auth</h1>
+                <p class="subtitle">Protected authentication system</p>
+            </div>
+
+            <!-- Alert Message -->
+            <div id="alertMessage" class="alert hidden">
+                <svg class="alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                <span id="alertText"></span>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab active" id="loginTab" onclick="switchTab('login')">Login</button>
+                <button class="tab" id="signupTab" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="form-container">
+                <div class="input-group">
+                    <label>Username</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <input type="text" id="loginUsername" placeholder="Enter username" maxlength="20">
+                    </div>
+                    <span class="error-message" id="loginUsernameError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <input type="password" id="loginPassword" placeholder="Enter password">
+                        <button type="button" class="toggle-password" onclick="togglePassword('loginPassword', 'loginEyeIcon')">
+                            <svg id="loginEyeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="error-message" id="loginPasswordError"></span>
+                </div>
+
+                <button class="submit-btn" onclick="handleLogin()">Login</button>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signupForm" class="form-container hidden">
+                <div class="input-group">
+                    <label>Username</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <input type="text" id="signupUsername" placeholder="Enter username" maxlength="20">
+                    </div>
+                    <span class="error-message" id="signupUsernameError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <input type="email" id="signupEmail" placeholder="Enter email">
+                    </div>
+                    <span class="error-message" id="signupEmailError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <input type="password" id="signupPassword" placeholder="Enter password">
+                        <button type="button" class="toggle-password" onclick="togglePassword('signupPassword', 'signupEyeIcon')">
+                            <svg id="signupEyeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="error-message" id="signupPasswordError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm password">
+                        <button type="button" class="toggle-password" onclick="togglePassword('signupConfirmPassword', 'confirmEyeIcon')">
+                            <svg id="confirmEyeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="error-message" id="signupConfirmPasswordError"></span>
+                </div>
+
+                <button class="submit-btn" onclick="handleSignup()">Create Account</button>
+
+                <!-- Password Requirements -->
+                <div class="password-requirements">
+                    <p class="requirements-title">Password Requirements:</p>
+                    <ul>
+                        <li>• At least 8 characters</li>
+                        <li>• One uppercase letter</li>
+                        <li>• One lowercase letter</li>
+                        <li>• One number</li>
+                        <li>• One special character (!@#$%^&*)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="security-notice">
+                Protected by advanced security measures including input validation, XSS protection, and session management
+            </div>
+        </div>
+
+        <!-- Dashboard (Hidden by default) -->
+        <div class="dashboard hidden" id="dashboard">
+            <div class="dashboard-card">
+                <div class="success-icon-circle">
+                    <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h2>Welcome Back!</h2>
+                <p class="dashboard-subtitle">You are securely logged in</p>
+                
+                <div class="user-info">
+                    <p><strong>Username:</strong> <span id="dashUsername"></span></p>
+                    <p><strong>Email:</strong> <span id="dashEmail"></span></p>
+                </div>
+
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+}
+
+/* Auth Card */
+.auth-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.icon-circle {
+    width: 64px;
+    height: 64px;
+    background: #E0E7FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.shield-icon {
+    width: 40px;
+    height: 40px;
+    color: #4F46E5;
+}
+
+h1 {
+    font-size: 28px;
+    color: #1F2937;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #6B7280;
+    font-size: 14px;
+}
+
+/* Alert Messages */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.alert.success {
+    background: #ECFDF5;
+    color: #065F46;
+}
+
+.alert.error {
+    background: #FEF2F2;
+    color: #991B1B;
+}
+
+.alert-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: #F3F4F6;
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 24px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: #6B7280;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    color: #1F2937;
+}
+
+.tab.active {
+    background: white;
+    color: #4F46E5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Container */
+.form-container {
+    display: block;
+}
+
+/* Input Groups */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    color: #9CA3AF;
+    pointer-events: none;
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px 12px 44px;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s;
+    outline: none;
+}
+
+input:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+input.error {
+    border-color: #DC2626;
+}
+
+input.error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password svg {
+    width: 20px;
+    height: 20px;
+    color: #9CA3AF;
+    transition: color 0.2s;
+}
+
+.toggle-password:hover svg {
+    color: #6B7280;
+}
+
+.error-message {
+    display: block;
+    color: #DC2626;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.submit-btn:hover {
+    background: #4338CA;
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* Password Requirements */
+.password-requirements {
+    margin-top: 24px;
+    padding: 16px;
+    background: #F9FAFB;
+    border-radius: 8px;
+}
+
+.requirements-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.password-requirements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.password-requirements li {
+    font-size: 12px;
+    color: #6B7280;
+    margin-bottom: 4px;
+}
+
+/* Security Notice */
+.security-notice {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 11px;
+    color: #9CA3AF;
+    line-height: 1.5;
+}
+
+/* Dashboard */
+.dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 480px;
+}
+
+.success-icon-circle {
+    width: 64px;
+    height: 64px;
+    background: #ECFDF5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.success-icon {
+    width: 40px;
+    height: 40px;
+    color: #059669;
+}
+
+.dashboard-card h2 {
+    font-size: 24px;
+    color: #1F2937;
+    margin-bottom: 8px;
+}
+
+.dashboard-subtitle {
+    color: #6B7280;
+    margin-bottom: 24px;
+}
+
+.user-info {
+    background: #EFF6FF;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.user-info p {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.user-info p:last-child {
+    margin-bottom: 0;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 14px;
+    background: #DC2626;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background: #B91C1C;
+}
+
+.logout-btn:active {
+    transform: translateY(1px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .auth-card, .dashboard-card {
+        padding: 24px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+}
